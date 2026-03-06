@@ -1,1 +1,276 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>The Design Lab</title>
+    <style>
+        /* Reset & base styles */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            scroll-behavior: smooth;
+            background-color: #f4f4f4;
+        }
 
+        /* Navbar */
+        nav {
+            position: fixed;
+            top: 0;
+            left: 0;
+            height: 100vh;
+            width: 220px;
+            background-color: #111;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            padding-top: 20px;
+        }
+
+        nav img {
+            width: 150px;
+            margin-bottom: 40px;
+        }
+
+        nav a {
+            color: white;
+            text-decoration: none;
+            margin: 15px 0;
+            font-weight: bold;
+            font-size: 18px;
+            transition: all 0.3s ease;
+        }
+
+        nav a:hover {
+            color: #ff0000; /* red highlight on hover */
+        }
+
+        /* Main content */
+        main {
+            margin-left: 220px;
+            padding: 0;
+        }
+
+        section {
+            min-height: 100vh;
+            padding: 80px 50px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+
+        /* Banner Section */
+        #home {
+            background: url('https://media.discordapp.net/attachments/1479456961924960267/1479481204498628808/THE_DESIGN_LAB.png?ex=69ac31be&is=69aae03e&hm=0d6e5575698fc05aef54513520a7181bfea42159e7abd61d6900d7146efe4c85&=&format=webp&quality=lossless&width=1882&height=618') no-repeat center center/cover;
+            color: white;
+            text-align: center;
+        }
+
+        #home h1 {
+            font-size: 60px;
+            margin-bottom: 20px;
+            text-shadow: 2px 2px 8px rgba(0,0,0,0.7);
+        }
+
+        #home p {
+            font-size: 24px;
+            text-shadow: 1px 1px 5px rgba(0,0,0,0.6);
+        }
+
+        /* Section titles */
+        section h2 {
+            font-size: 40px;
+            margin-bottom: 30px;
+            color: #333;
+            border-left: 5px solid #ff0000;
+            padding-left: 10px;
+        }
+
+        /* Prices section */
+        .prices table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+
+        .prices th, .prices td {
+            border: 1px solid #ccc;
+            padding: 12px 15px;
+            text-align: left;
+        }
+
+        .prices th {
+            background-color: #007bff; /* blue header */
+            color: white;
+        }
+
+        .prices td {
+            background-color: #d4edda; /* light green rows */
+        }
+
+        /* Designs section */
+        .designs img {
+            width: 100%;
+            max-width: 700px;
+            margin-bottom: 20px;
+            border-radius: 10px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.3);
+        }
+
+        /* Staff section */
+        .staff .member {
+            display: flex;
+            align-items: center;
+            margin-bottom: 20px;
+            padding: 15px;
+            border-left: 5px solid #28a745; /* green accent */
+            background-color: #fff;
+            box-shadow: 0 3px 10px rgba(0,0,0,0.1);
+            border-radius: 8px;
+        }
+
+        .staff .member img {
+            width: 80px;
+            height: 80px;
+            border-radius: 50%;
+            margin-right: 20px;
+        }
+
+        /* Media Section */
+        .media iframe {
+            width: 100%;
+            max-width: 800px;
+            height: 450px;
+            border: none;
+            margin-bottom: 20px;
+            border-radius: 10px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.3);
+        }
+
+        /* Footer */
+        footer {
+            text-align: center;
+            padding: 30px;
+            background-color: #111;
+            color: white;
+        }
+
+        /* Smooth scroll animation */
+        html {
+            scroll-behavior: smooth;
+        }
+
+        @media (max-width: 900px) {
+            nav {
+                width: 100%;
+                height: auto;
+                flex-direction: row;
+                justify-content: space-around;
+                padding: 10px 0;
+            }
+            nav img {
+                display: none;
+            }
+            main {
+                margin-left: 0;
+                margin-top: 70px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <nav>
+        <img src="https://media.discordapp.net/attachments/1430536118394421433/1479478980179525712/design_logo-removebg-preview.png?ex=69ac2fac&is=69aade2c&hm=f14329214c92c584820ed98b9bf88b341d6d98124085f64064a02cb9e3ba8a32&=&format=webp&quality=lossless&width=694&height=435" alt="The Design Lab Logo">
+        <a href="#home">Home</a>
+        <a href="#prices">Prices</a>
+        <a href="#designs">Designs</a>
+        <a href="#media">Media</a>
+        <a href="#staff">Our Staff</a>
+    </nav>
+
+    <main>
+        <!-- Banner / Home Section -->
+        <section id="home">
+            <h1>The Design Lab</h1>
+            <p>Professional Design Services at Your Fingertips</p>
+        </section>
+
+        <!-- Prices Section -->
+        <section id="prices" class="prices">
+            <h2>Prices</h2>
+            <h3>Liveries</h3>
+            <table>
+                <tr>
+                    <th>Type</th>
+                    <th>Price</th>
+                </tr>
+                <tr><td>1 PD livery</td><td>50 Robux</td></tr>
+                <tr><td>1 FD livery</td><td>55 Robux</td></tr>
+                <tr><td>1 DOT livery</td><td>50 Robux</td></tr>
+                <tr><td>1 Staff livery</td><td>50-100 Robux</td></tr>
+                <tr><td>2-10 liveries</td><td>Depending on design</td></tr>
+            </table>
+
+            <h3>Banners</h3>
+            <table>
+                <tr><td>1 Banner</td><td>40 Robux</td></tr>
+                <tr><td>2 Banners</td><td>70 Robux</td></tr>
+                <tr><td>4+ Banners</td><td>Double That</td></tr>
+            </table>
+
+            <h3>GFX</h3>
+            <p>1 GFX: 40-50 Robux (Depending on design)</p>
+
+            <h3>Maps</h3>
+            <p>1 Map editor: 50-100 Robux (Depending on design)</p>
+
+            <h3>Bots</h3>
+            <p>1-5 commands: 100-200 Robux</p>
+            <p>5-10 commands: 400 Robux</p>
+            <p>Bot hosting: Free (11PM GMT - 00:00AM GMT)</p>
+
+            <h3>Logos</h3>
+            <p>1 Logo: 50-100 Robux (Depending on design)</p>
+        </section>
+
+        <!-- Designs Section -->
+        <section id="designs" class="designs">
+            <h2>Designs</h2>
+            <img src="https://media.discordapp.net/attachments/1474522182808764668/1478500101814096036/2286A7C1-493D-4188-9675-16F128AED6D9.png?ex=69abebc5&is=69aa9a45&hm=9c317410e595311af8053a754982b0eb19444ad5c89539a1ca820f65512c1926&=&format=webp&quality=lossless&width=1328&height=617" alt="Design Sample 1">
+            <img src="https://media.discordapp.net/attachments/1474522182808764668/1474522404285055223/LARP_1.png?ex=69abf3c0&is=69aaa240&hm=e52aa6458a55d02e92bba68a494ca70bb76863898942925a521f3c817c6982e4&=&format=webp&quality=lossless&width=1420&height=525" alt="Design Sample 2">
+        </section>
+
+        <!-- Media Section -->
+        <section id="media" class="media">
+            <h2>Media</h2>
+            <iframe src="https://www.youtube.com/embed/dQw4w9WgXcQ" title="Sample Media"></iframe>
+        </section>
+
+        <!-- Staff Section -->
+        <section id="staff" class="staff">
+            <h2>Our Staff</h2>
+            <div class="member">
+                <img src="https://i.imgur.com/8Km9tLL.png" alt="NexX">
+                <div>
+                    <h3>NexX</h3>
+                    <p>Owner & Lead Bot Developer</p>
+                </div>
+            </div>
+            <div class="member">
+                <img src="https://i.imgur.com/8Km9tLL.png" alt="Ezy">
+                <div>
+                    <h3>Ezy</h3>
+                    <p>Developer & Designer</p>
+                </div>
+            </div>
+        </section>
+
+        <footer>
+            &copy; 2026 The Design Lab | All rights reserved.
+        </footer>
+    </main>
+</body>
+</html>
