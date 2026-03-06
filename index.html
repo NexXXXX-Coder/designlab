@@ -33,7 +33,8 @@ section.visible { opacity:1; transform:translateY(0); }
 
 /* ---------- BANNER ---------- */
 #banner {
-  background:url('https://media.discordapp.net/attachments/1479456961924960267/1479481204498628808/THE_DESIGN_LAB.png?ex=69ac31be&is=69aae03e&hm=0d6e5575698fc05aef54513520a7181bfea42159e7abd61d6900d7146efe4c85&=&format=webp&quality=lossless&width=1882&height=618') no-repeat center center/cover;
+  background:url('https://media.discordapp.net/attachments/1479456961924960267/1479481204498628808/THE_DESIGN_LAB.png?ex=69ac31be&is=69aae03e&hm=0d6e5575698fc05aef54513520a7181bfea42159e7abd61d6900d7146efe4c85&=&format=webp&quality=lossless&width=1882&height=618') no-repeat center center;
+  background-size: 140% auto; /* zoom ~40% to fit sides */
   height:400px;
 }
 
@@ -59,17 +60,18 @@ section h2 { font-size:40px; margin-bottom:30px; color:#333; border-left:5px sol
 }
 .designs img:hover { transform:scale(1.05); box-shadow:0 12px 30px rgba(0,0,0,0.4); }
 
-/* ---------- MEDIA ---------- */
-.Change media to official affiliations or smt .server {
+/* ---------- OFFICIAL AFFILIATIONS ---------- */
+#affiliations .server {
   display:flex; align-items:center; margin-bottom:30px;
-  background:#fff; padding:15px; border-radius:10px; box-shadow:0 4px 15px rgba(0,0,0,0.15);
-  transition: transform 0.4s ease;
+  background:#fff; padding:15px; border-radius:15px; box-shadow:0 6px 20px rgba(0,0,0,0.15);
+  transition: transform 0.4s ease, box-shadow 0.4s ease;
 }
-.Change media to official affiliations or smt.server:hover { transform:translateY(-5px); }
-.media .server img { width:100px; height:100px; margin-right:20px; border-radius:10px; }
-.media .server div { max-width:700px; }
-.media .server a { color:#007bff; text-decoration:none; font-weight:bold; }
-.media .server a:hover { text-decoration:underline; }
+#affiliations .server:hover { transform: translateY(-5px); box-shadow:0 8px 25px rgba(0,0,0,0.25); }
+#affiliations .server img { width:110px; height:110px; margin-right:20px; border-radius:15px; }
+#affiliations .server h3 { color:#ff0000; margin-bottom:5px; }
+#affiliations .server a { color:#007bff; font-weight:bold; text-decoration:none; }
+#affiliations .server a:hover { text-decoration:underline; }
+#affiliations .server p { color:#333; }
 
 /* ---------- STAFF ---------- */
 .staff .member {
@@ -83,34 +85,92 @@ section h2 { font-size:40px; margin-bottom:30px; color:#333; border-left:5px sol
 /* ---------- FOOTER ---------- */
 footer { text-align:center; padding:30px; background:#111; color:white; }
 
+/* ---------- POP-UP ---------- */
+.popup {
+  position: fixed; top:0; left:0; width:100%; height:100%;
+  background: rgba(0,0,0,0.8); display:flex; align-items:center; justify-content:center;
+  z-index:1000; visibility:hidden; opacity:0; transition: all 0.5s ease;
+}
+.popup.show { visibility: visible; opacity:1; }
+.popup-content {
+  background:#fff; padding:30px; border-radius:15px; width:90%; max-width:700px; text-align:center; position:relative;
+  animation: popupFade 0.5s ease;
+}
+.popup h2 { font-size:32px; margin-bottom:20px; }
+.popup-member { display:flex; align-items:center; margin:20px 0; text-align:left; }
+.popup-member img { width:80px; height:80px; border-radius:50%; margin-right:20px; }
+.popup-member h3 { margin-bottom:5px; color:#ff0000; }
+.popup-member p { color:#333; }
+.close-btn {
+  position:absolute; top:15px; right:20px; font-size:28px; cursor:pointer; color:#333;
+  transition: color 0.3s;
+}
+.close-btn:hover { color:#ff0000; }
+@keyframes popupFade {
+  from { transform: scale(0.8); opacity:0; }
+  to { transform: scale(1); opacity:1; }
+}
+
 /* ---------- RESPONSIVE ---------- */
 @media (max-width:900px) {
   nav { width:100%; height:auto; flex-direction:row; justify-content:space-around; padding:10px 0; }
   nav img { display:none; }
   main { margin-left:0; margin-top:70px; }
   .designs { grid-template-columns:1fr; }
+  #affiliations .server { flex-direction:column; text-align:center; }
+  #affiliations .server img { margin-bottom:10px; margin-right:0; }
+  .popup-member { flex-direction:column; text-align:center; }
+  .popup-member img { margin-bottom:10px; margin-right:0; }
 }
 </style>
 </head>
 <body>
+
+<!-- NAVBAR -->
 <nav>
 <img src="https://media.discordapp.net/attachments/1430536118394421433/1479478980179525712/design_logo-removebg-preview.png" alt="Logo">
 <a href="#banner">Banner</a>
 <a href="#home">Home</a>
 <a href="#prices">Prices</a>
 <a href="#designs">Designs</a>
-<a href="#media">Media</a>
+<a href="#affiliations">Official Affiliations</a>
 <a href="#staff">Our Staff</a>
 </nav>
 
 <main>
+
+<!-- POP-UP MODAL -->
+<div id="staff-popup" class="popup">
+  <div class="popup-content">
+    <span class="close-btn">&times;</span>
+    <h2>Meet The Team</h2>
+    <div class="popup-member">
+      <img src="https://images-ext-1.discordapp.net/external/7XHvf0H63BJ5jeCR01RuonWkTgHrMX7g1vg6TYjptzY/%3Fsize%3D1024/https/cdn.discordapp.com/avatars/1385673827257942166/ba73f451830cbd4a3fc20d9dfdaf68e9.png" alt="Ezy">
+      <div>
+        <h3>Ezy</h3>
+        <p>Developer & Designer — Creative mind behind our custom designs, banners, and graphics. Expert in making projects visually outstanding.</p>
+      </div>
+    </div>
+    <div class="popup-member">
+      <img src="https://images-ext-1.discordapp.net/external/sahgaCIOkhuBtmfORVeWLgvZva_aUKsJlb3iU4HPY7A/%3Fsize%3D1024/https/cdn.discordapp.com/avatars/1384586272382783540/770d14a9768daf3a77ca96694d31805d.png" alt="NexX">
+      <div>
+        <h3>NexX</h3>
+        <p>Owner & Lead Bot Developer — Oversees all operations and leads bot development. Ensures quality, creativity, and smooth workflow across all projects.</p>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- BANNER -->
 <section id="banner"></section>
 
+<!-- HOME -->
 <section id="home">
 <h1>The Design Lab</h1>
 <p>Welcome to <strong>The Design Lab</strong> – your professional hub for liveries, banners, GFX, maps, bots, and logos. We merge creativity and precision to deliver tailored designs that elevate your projects. Join our community and bring your vision to life today!</p>
 </section>
 
+<!-- PRICES -->
 <section id="prices" class="prices">
 <h2>Prices</h2>
 <h3>Liveries</h3>
@@ -140,6 +200,7 @@ footer { text-align:center; padding:30px; background:#111; color:white; }
 <p>1 Logo: 50-100 Robux (Depending on design)</p>
 </section>
 
+<!-- DESIGNS -->
 <section id="designs" class="designs">
 <h2>Designs</h2>
 <img src="https://media.discordapp.net/attachments/1474522182808764668/1478500101814096036/2286A7C1-493D-4188-9675-16F128AED6D9.png" alt="Design 1">
@@ -148,31 +209,35 @@ footer { text-align:center; padding:30px; background:#111; color:white; }
 <img src="https://media.discordapp.net/attachments/1430536118394421433/1479486597648089279/pbdrp_car.png" alt="Design 4">
 </section>
 
-<section id="media" class="media">
-<h2>Media</h2>
+<!-- OFFICIAL AFFILIATIONS -->
+<section id="affiliations" class="media">
+<h2>Official Affiliations</h2>
 <div class="server">
-<img src="https://media.discordapp.net/attachments/1430536118394421433/1479490147530838291/99F651E7-2AE5-49CA-B2AB-A29E731708AD.png" alt="Media 1">
+<img src="https://media.discordapp.net/attachments/1430536118394421433/1479490147530838291/99F651E7-2AE5-49CA-B2AB-A29E731708AD.png" alt="PBDRP">
 <div>
 <h3>PBDRP Server</h3>
-<p>Owned by NexX, ERLC RP server with 70+ members. Join today: <a href="https://discord.gg/tBZbV89a" target="_blank">discord.gg/tBZbV89a</a></p>
+<p>Owned by NexX, ERLC RP server with 70+ members. Full support for our liveries and designs. Join today: <a href="https://discord.gg/tBZbV89a" target="_blank">discord.gg/tBZbV89a</a></p>
 </div>
 </div>
+
 <div class="server">
-<img src="https://media.discordapp.net/attachments/1430536118394421433/1479490146905755782/FB1D04A2-0BDD-4965-A0D5-D6C16452CFD4.png" alt="Media 2">
+<img src="https://media.discordapp.net/attachments/1430536118394421433/1479490146905755782/FB1D04A2-0BDD-4965-A0D5-D6C16452CFD4.png" alt="LNCRP">
 <div>
 <h3>LNCRP Server</h3>
-<p>Owned by Ezy, RP server with 100+ members. Join today: <a href="https://discord.gg/j4G7pwR8" target="_blank">discord.gg/j4G7pwR8</a></p>
+<p>Owned by Ezy, RP server with 100+ members. Our designs and bots are featured here. Join today: <a href="https://discord.gg/j4G7pwR8" target="_blank">discord.gg/j4G7pwR8</a></p>
 </div>
 </div>
+
 <div class="server">
-<img src="https://media.discordapp.net/attachments/1430536118394421433/1479490328128917595/8D81BB6A-B097-4164-B9AE-9AB961697E53.png" alt="Media 3">
+<img src="https://media.discordapp.net/attachments/1430536118394421433/1479490328128917595/8D81BB6A-B097-4164-B9AE-9AB961697E53.png" alt="Additional Media">
 <div>
-<h3>Additional Media</h3>
-<p>Showcase of our latest projects and creative work.</p>
+<h3>Project Highlights</h3>
+<p>Showcase of our latest designs and creative work across various platforms.</p>
 </div>
 </div>
 </section>
 
+<!-- STAFF -->
 <section id="staff" class="staff">
 <h2>Our Staff</h2>
 <div class="member">
@@ -198,14 +263,12 @@ footer { text-align:center; padding:30px; background:#111; color:white; }
 // ---------- SCROLL ANIMATION ----------
 const sections = document.querySelectorAll('section');
 const navLinks = document.querySelectorAll('nav a');
-
 function setActive() {
   let index = sections.length;
   while(--index && window.scrollY + 200 < sections[index].offsetTop) {}
   navLinks.forEach(link => link.classList.remove('active'));
   navLinks[index].classList.add('active');
 }
-
 window.addEventListener('scroll', () => {
   setActive();
   sections.forEach(sec => {
@@ -214,8 +277,16 @@ window.addEventListener('scroll', () => {
     }
   });
 });
-
 window.addEventListener('load', () => { sections.forEach(sec => sec.classList.add('visible')); setActive(); });
+
+// ---------- POP-UP SCRIPT ----------
+document.addEventListener('DOMContentLoaded', () => {
+  const popup = document.getElementById('staff-popup');
+  const closeBtn = document.querySelector('.close-btn');
+  popup.classList.add('show');
+  closeBtn.addEventListener('click', () => popup.classList.remove('show'));
+  popup.addEventListener('click', e => { if(e.target===popup) popup.classList.remove('show'); });
+});
 </script>
 </body>
 </html>
